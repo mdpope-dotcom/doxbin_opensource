@@ -1,0 +1,24 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pastebin Clone</title>
+    <style>
+        body { font-family: Arial, sans-serif; background-color: #f4f4f4; }
+        .container { width: 50%; margin: auto; padding: 20px; background: white; border-radius: 5px; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Pastebin Clone</h1>
+        <a href="{{ url_for('new_paste') }}">Add New Paste</a>
+        <h2>Past Pasts</h2>
+        <ul>
+            {% for paste_id, paste in pastes.items() %}
+                <li><a href="{{ url_for('view_paste', paste_id=paste_id) }}">{{ paste.title }}</a>: {{ paste.content[:30] }}...</li>
+            {% endfor %}
+        </ul>
+    </div>
+</body>
+</html>
